@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="mar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham's Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS डिझाइन */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0c29; /* डार्क बॅकग्राउंड */
+            color: white;
+            overflow-x: hidden; /* आडवा स्क्रोल बार नको */
+        }
+
+        /* --- 1. सस्पेन्स स्क्रीन --- */
+        #intro-screen {
+            height: 100vh;
+            width: 100%;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            transition: top 1s ease-in-out;
+        }
+
+        #intro-screen h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .magic-btn {
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            background: white;
+            color: #ff4b2b;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .magic-btn:hover {
+            transform: scale(1.1);
+            background-color: #fff0f0;
+        }
+
+        /* --- 2. मेन गॅलरी (स्लायडर) --- */
+        #gallery-section {
+            display: none;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: #00d2ff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* स्लायडर कंटेनर */
+        .slider-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden; /* बाहेर जाणारे फोटो लपवा */
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05); /* हलका बॅकग्राउंड पट्टा */
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* फोटोची पट्टी (Track) */
+        .slide-track {
+            display: flex;
+            /* फोटो फिरण्याचे ॲनिमेशन */
+            animation: scroll 15s linear infinite;
+        }
+
+        /* एका फोटोची स्टाईल */
+        .slide {
+            width: 250px;
+            height: 300px;
+            padding: 15px;
+            flex-shrink: 0; /* फोटो चपटे होऊ नयेत */
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+        }
+
+        /* फोटोवर माउस नेल्यावर तो थांबेल आणि झूम होईल */
+        .slide img:hover {
+            transform: scale(1.1);
+            border-color: #00d2ff;
+        }
+
+        /* स्लायडर फिरण्यासाठी ॲनिमेशन */
+        /* टीप: इथे आपण पट्टी डावीकडे सरकवतोय */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* अर्धी पट्टी सरकली की लूप पूर्ण होतो */
+        }
+
+        /* --- फुटर --- */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+        }
+
+        footer span {
+            color: #ff0055;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="intro-screen">
+        <h1>थांब भाऊ... ✋</h1>
+        <p>जरा इकडे क्लिक कर मग जादू बघ!</p>
+        <button class="magic-btn" onclick="startShow()">Click Here</button>
+    </div>
+
+    <div id="gallery-section">
+        <h1 class="title">आपला विषय हार्ड आहे! 🔥</h1>
+
+        <div class="slider-container">
+            <div class="slide-track">
+                
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.33 PM.jpeg" alt="Photo 1"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.34 PM (1).jpeg" alt="Photo 2"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.34 PM.jpeg" alt="Photo 3"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.35 PM.jpeg" alt="Photo 4"></div>
+
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.33 PM.jpeg" alt="Photo 1"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.34 PM (1).jpeg" alt="Photo 2"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.34 PM.jpeg" alt="Photo 3"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.35 PM.jpeg" alt="Photo 4"></div>
+
+
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.33 PM.jpeg" alt="Photo 1"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.34 PM (1).jpeg" alt="Photo 2"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.34 PM.jpeg" alt="Photo 3"></div>
+                <div class="slide"><img src="WhatsApp Image 2025-12-28 at 9.49.35 PM.jpeg" alt="Photo 4"></div>
+
+
+
+            </div>
+        </div>
+
+        <footer>
+            Created with ❤️ by <span>Shubham More</span>
+        </footer>
+    </div>
+
+    <script>
+        function startShow() {
+            // सस्पेन्स स्क्रीन वर घालवा
+            document.getElementById('intro-screen').style.top = "-100vh";
+            // गॅलरी दाखवा (Flex मोडमध्ये जेणेकरून सेंटरला येईल)
+            document.getElementById('gallery-section').style.display = "flex";
+        }
+    </script>
+
+</body>
+</html>
